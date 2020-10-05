@@ -679,6 +679,7 @@
 					<rulesets>
 					    <ruleset>file:///${project.basedir}/maven-pmd-plugin-default.xml</ruleset>
 					</rulesets>
+					<outputDirectory>${project.basedir}</outputDirectory>
 					<skipEmptyReport>false</skipEmptyReport>
 				</configuration>
 			</plugin>
