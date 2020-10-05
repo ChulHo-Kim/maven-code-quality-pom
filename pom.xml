@@ -676,7 +676,7 @@
 					<sourceEncoding>utf-8</sourceEncoding>
 					<targetJdk>${jdk.version}</targetJdk>
 					<rulesets>
-					    <ruleset>maven-pmd-plugin-default.xml</ruleset>
+					    <ruleset>file:///${project.basedir}/maven-pmd-plugin-default.xml</ruleset>
 					</rulesets>
 					<skipEmptyReport>false</skipEmptyReport>
 				</configuration>
