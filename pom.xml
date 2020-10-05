@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
 	<!-- The Super POM. @see https://maven.apache.org/pom.html -->
-
 	<!-- The Basics @see https://maven.apache.org/pom.html#The_Basics -->
-
 	<!-- Recommended Order -->
 	<!-- groupId version description url inceptionYear organization licenses
 		developers contributors mailingLists scm issueManagement ciManagement properties
 		dependencyManagement dependencies repositories pluginRepositories build plugin
 		executions with matching ids plugin configuration etc. reporting profiles -->
-
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.swindle</groupId>
 	<artifactId>maven-code-quality-pom</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>maven-code-quality-pom</name>
-	<description><![CDATA[<h2>Code quality enforcement and reporting</h3><p><strong>Enforce and report code quality with JUnit, JaCoCo, Hamcrest, FindBugs, PMD, CodeNarc, Checkstyle (Google), Enforcer, Duplicate-Finder, JDepend, and more with this Maven POM.</strong></p><p><code>maven-code-quality-pom</code> is a spike Spring solution for providing Maven POMs with quality assurance features.</p><h3>Purpose</h3><p>The purpose of the project is to use the Maven Site Plugin to:</p><ol><li> Use the Maven Site Plugin to generate meaningful test and quality reporting artifacts</li><li> Enforce test coverage thresholds and code standards</li><li> Prevent source code that does not conform to standards from being merged into <code>master</code>.</li></ol>]]></description>
+	<description>
+		<![CDATA[<h2>Code quality enforcement and reporting</h3><p><strong>Enforce and report code quality with JUnit, JaCoCo, Hamcrest, FindBugs, PMD, CodeNarc, Checkstyle (Google), Enforcer, Duplicate-Finder, JDepend, and more with this Maven POM.</strong></p><p><code>maven-code-quality-pom</code> is a spike Spring solution for providing Maven POMs with quality assurance features.</p><h3>Purpose</h3><p>The purpose of the project is to use the Maven Site Plugin to:</p><ol><li> Use the Maven Site Plugin to generate meaningful test and quality reporting artifacts</li><li> Enforce test coverage thresholds and code standards</li><li> Prevent source code that does not conform to standards from being merged into <code>master</code>.</li></ol>]]>
+	</description>
 	<url>https://github.com/gregswindle/maven-code-quality-pom</url>
 	<inceptionYear>2017</inceptionYear>
 	<organization>
@@ -40,18 +40,12 @@
 			<timezone>UTC-05:00</timezone>
 		</developer>
 	</developers>
-
-
 	<scm>
 		<url>https://github.com/gregswindle/maven-code-quality-pom</url>
 		<connection>scm:git:https://github.com/gregswindle/maven-code-quality-pom</connection>
 		<developerConnection>scm:git:https://github.com/gregswindle/maven-code-quality-pom</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
-
-
-
-
 	<issueManagement>
 		<system>GitHub</system>
 		<url>${project.url}/issues</url>
@@ -60,7 +54,6 @@
 		<system>travis-ci</system>
 		<url>https://travis-ci.org/gregswindle/maven-code-quality-pom</url>
 	</ciManagement>
-
 	<repositories>
 		<repository>
 			<id>central</id>
@@ -79,7 +72,6 @@
 			</releases>
 		</pluginRepository>
 	</pluginRepositories>
-
 	<properties>
 		<checkstyle.version>8.4</checkstyle.version>
 		<coveralls.token>${env.COVERALLS_MAVEN_CODE_QUALITY_POM_TOKEN}</coveralls.token>
@@ -240,7 +232,6 @@
 				<directory>${project.basedir}/src/test/resources</directory>
 			</testResource>
 		</testResources>
-
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -558,7 +549,6 @@
 					<repoToken>${coveralls.token}</repoToken>
 				</configuration>
 			</plugin>
-
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>license-maven-plugin</artifactId>
@@ -596,7 +586,7 @@
 				<version>${fmt.maven.plugin.version}</version>
 				<executions>
 					<execution>
-            <id>format</id>
+						<id>format</id>
 						<goals>
 							<goal>format</goal>
 						</goals>
@@ -634,16 +624,13 @@
 						</reports>
 					</reportSet>
 				</reportSets>
-				<!-- <configuration> <dependencyLocationsEnabled>true</dependencyLocationsEnabled>
-					</configuration> -->
+				<!-- <configuration><dependencyLocationsEnabled>true</dependencyLocationsEnabled></configuration> -->
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-report-plugin</artifactId>
 				<version>${maven.surefire.plugin.version}</version>
 				<configuration />
-
-
 			</plugin>
 			<plugin>
 				<groupId>org.jacoco</groupId>
@@ -674,10 +661,10 @@
 				<configuration>
 					<linkXref>true</linkXref>
 					<sourceEncoding>utf-8</sourceEncoding>
-					<targetJdk>${jdk.version}</targetJdk>
-					<<includeTests>true</includeTests>
+					<targetJdk>${jdk.version}</targetJdk><
+					<includeTests>true</includeTests>
 					<rulesets>
-					    <ruleset>file:///${project.basedir}/maven-pmd-plugin-default.xml</ruleset>
+						<ruleset>file:///${project.basedir}/maven-pmd-plugin-default.xml</ruleset>
 					</rulesets>
 					<skipEmptyReport>false</skipEmptyReport>
 				</configuration>
@@ -746,14 +733,10 @@
 				<artifactId>maven-enforcer-plugin</artifactId>
 				<version>3.0.0-M1</version>
 			</plugin>
-
-
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>license-maven-plugin</artifactId>
 			</plugin>
-
-
 		</plugins>
 	</reporting>
 	<profiles>
@@ -780,5 +763,4 @@
 			</properties>
 		</profile>
 	</profiles>
-
 </project>
