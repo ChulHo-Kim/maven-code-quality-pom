@@ -674,15 +674,10 @@
 				<configuration>
 					<linkXref>true</linkXref>
 					<sourceEncoding>utf-8</sourceEncoding>
-					<minimumTokens>100</minimumTokens>
 					<targetJdk>${jdk.version}</targetJdk>
-					<excludes>
-						<exclude>**/*Test.java</exclude>
-						<exclude>**/generated/*.java</exclude>
-					</excludes>
-					<excludeRoots>
-						<excludeRoot>target/generated-sources/stubs</excludeRoot>
-					</excludeRoots>
+					<rulesets>
+					    <ruleset>target/pmd/ruleset/maven-pmd-plugin-default.xml</ruleset>
+					</rulesets>
 					<skipEmptyReport>false</skipEmptyReport>
 				</configuration>
 			</plugin>
