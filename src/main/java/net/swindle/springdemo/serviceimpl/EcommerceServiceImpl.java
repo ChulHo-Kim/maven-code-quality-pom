@@ -4,6 +4,8 @@ import java.util.Random;
 import net.swindle.springdemo.service.BusinessService;
 
 public class EcommerceServiceImpl implements BusinessService {
+  
+  int number;
 
   /* (non-Javadoc)
    * @see net.swindle.springdemo.service.BusinessService#offerService(java.lang.String)
