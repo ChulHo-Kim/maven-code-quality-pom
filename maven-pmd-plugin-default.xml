@@ -5,11 +5,11 @@
          xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 http://pmd.sourceforge.net/ruleset_2_0_0.xsd">
     <description>PMD Plugin preferences rule set</description>
 
-    <rule name="AvoidThrowingNullPointerException" language="java" message="RULE#1:Avoid throwing a NullPointerException" class="net.sourceforge.pmd.lang.rule.XPathRule">
+    <rule name="AvoidThrowingNullPointerException" language="java" message="NullPointerException을 throw하는 것은 비추천" class="net.sourceforge.pmd.lang.rule.XPathRule">
     	<description>
 			Avoid throwing NullPointerExceptions manually. These are confusing because most people will assume that the virtual machine threw it. 
 			To avoid a method being called with a null parameter, you may consider using an IllegalArgumentException instead, making it clearly seen as a programmer-initiated exception.
-        </description>
+      	</description>
         <example><![CDATA[
         
 			public class Foo {
@@ -30,10 +30,10 @@
 		      	this.exampleValue = Objects.requireNonNull(exampleValue, "exampleValue must not be null!");
 		    	}
 		  	}
-		  	  
+  
       ]]></example>
-        <priority>1</priority>
-        <properties>
+       <priority>1</priority>
+       <properties>
        		<property name="xpath">
                 <value><![CDATA[
               
@@ -44,7 +44,7 @@
         </properties>
     </rule>
 	
-    <rule name="AvoidThrowingRawExceptionTypes" language="java" message="RULE#2:Avoid throwing certain exception types" class="net.sourceforge.pmd.lang.rule.XPathRule">
+    <rule name="AvoidThrowingRawExceptionTypes" language="java" message="가공되지 않은 Exception을 throw하는 것은 비추천" class="net.sourceforge.pmd.lang.rule.XPathRule">
     	<description>
  			Avoid throwing certain exception types.  Rather than throw a raw RuntimeException, Throwable,
  			Exception, or Error, use a subclassed exception or error instead.
@@ -79,7 +79,7 @@
         </properties>
     </rule>
 
-    <rule name="EqualsNull" language="java" message="RULE#3:Use equals() to compare to null" class="net.sourceforge.pmd.lang.rule.XPathRule">
+    <rule name="EqualsNull" language="java" message="null 값과 비교하기 위해 equals 함수를 사용하였음." class="net.sourceforge.pmd.lang.rule.XPathRule">
     	<description>
 			Tests for null should not use the equals() method. The ‘==’ operator should be used instead.
         </description>
@@ -125,7 +125,7 @@
         class : net.sourceforge.pmd.lang.java.rule.naming.VariableNamingConventionsRule -> net.sourceforge.pmd.lang.java.rule.codestyle.VariableNamingConventionsRule
         This rule is deprecated and will be removed with PMD 7.0.0. The rule is replaced by the more general rules FieldNamingConventions, FormalParameterNamingConventions, and LocalVariableNamingConventions.
     -->
-    <rule name="VariableNamingConventions" language="java" message="RULE#4:A variable naming conventions rule" class="net.sourceforge.pmd.lang.java.rule.codestyle.VariableNamingConventionsRule">
+    <rule name="VariableNamingConventions" language="java" message="''{0}'' 의 변수 ''{1}'' 이  ''{2}''  로 시작함" class="net.sourceforge.pmd.lang.java.rule.codestyle.VariableNamingConventionsRule">
         <description>
 			A variable naming conventions rule - customize this to your liking. Currently, it checks for final variables that should be fully capitalized and non-final variables that should not include underscores.
  			This rule is deprecated and will be removed with PMD 7.0.0. The rule is replaced by the more general rules FieldNamingConventions, FormalParameterNamingConventions, and LocalVariableNamingConventions.
@@ -141,12 +141,12 @@
         ]]></example>
         <priority>1</priority>
     </rule>
-    
+
     <!--
     	class : net.sourceforge.pmd.lang.java.rule.design.AvoidReassigningParametersRule
     	     -> net.sourceforge.pmd.lang.java.rule.bestpractices.AvoidReassigningParametersRule
     -->
-    <rule name="AvoidReassigningParameters" language="java" message="RULE#5:Reassigning values to parameters is a questionable practice" class="net.sourceforge.pmd.lang.java.rule.bestpractices.AvoidReassigningParametersRule">
+    <rule name="AvoidReassigningParameters" language="java" message="''{0}'' 처럼 파라미터 값을 직접 변경하지 말것" class="net.sourceforge.pmd.lang.java.rule.bestpractices.AvoidReassigningParametersRule">
         <description>
 			Reassigning values to incoming parameters is not recommended. Use temporary local variables instead.
     	</description>
@@ -167,7 +167,7 @@
     	class : net.sourceforge.pmd.lang.java.rule.strings.StringInstantiationRule
     	     -> net.sourceforge.pmd.lang.java.rule.performance.StringInstantiationRule
     -->
-    <rule name="StringInstantiation" language="java" message="RULE#6:Avoid instantiating String objects" class="net.sourceforge.pmd.lang.java.rule.performance.StringInstantiationRule">
+    <rule name="StringInstantiation" language="java" message="필요없는 Instance가 생성되어 있음" class="net.sourceforge.pmd.lang.java.rule.performance.StringInstantiationRule">
         <description>
 			Avoid instantiating String objects; this is usually unnecessary since they are immutable and can be safely shared.
     	</description>
@@ -180,7 +180,7 @@
         <properties/>
     </rule>
 
-    <rule name="AbstractClassWithoutAbstractMethod" language="java" message="RULE#7:The abstract class does not contain any abstract methods" class="net.sourceforge.pmd.lang.rule.XPathRule">
+    <rule name="AbstractClassWithoutAbstractMethod" language="java" message="Abstract Class내에  Abstract Method가 존재하지 않음" class="net.sourceforge.pmd.lang.rule.XPathRule">
         <description>
 			The abstract class does not contain any abstract methods. An abstract class suggests an incomplete implementation, which is to be completed by subclasses implementing the abstract methods. 
 			If the class is intended to be used as a base class only (not to be instantiated directly) a protected constructor can be provided prevent direct instantiation.
@@ -214,7 +214,7 @@
     	class : net.sourceforge.pmd.lang.rule.XPathRule
     	     -> net.sourceforge.pmd.lang.java.rule.errorprone.AssignmentInOperandRule  
     -->
-    <rule name="AssignmentInOperand" language="java" message="RULE#8:Avoid assignments in operands" class="net.sourceforge.pmd.lang.java.rule.errorprone.AssignmentInOperandRule">
+    <rule name="AssignmentInOperand" language="java" message="피연산자내에 할당문이 사용됨.Code 를 복잡하고 가독성이 떨어지게 만듬" class="net.sourceforge.pmd.lang.java.rule.errorprone.AssignmentInOperandRule">
         <description>
 			Avoid assignments in operands; this can make code more complicated and harder to read.
   		</description>
@@ -249,8 +249,8 @@
     	Deprecated class : net.sourceforge.pmd.lang.java.rule.design.AssignmentToNonFinalStaticRule
     	                   -> net.sourceforge.pmd.lang.java.rule.errorprone.AssignmentToNonFinalStaticRule  
     -->
-    <rule name="AssignmentToNonFinalStatic" language="java" message="RULE#9:Identifies a possible unsafe usage of a static field" class="net.sourceforge.pmd.lang.java.rule.errorprone.AssignmentToNonFinalStaticRule">
-    	<description>
+    <rule name="AssignmentToNonFinalStatic" language="java" message="static 필드의 안전하지않은 사용 가능성" class="net.sourceforge.pmd.lang.java.rule.errorprone.AssignmentToNonFinalStaticRule">
+       	<description>
 			Identifies a possible unsafe usage of a static field.
     	</description>
        	<example><![CDATA[
@@ -266,8 +266,8 @@
         <priority>3</priority>
         <properties/>
     </rule>
-    
-    <rule name="AvoidArrayLoops" language="java" message="RULE#10:Instead of copying data between two arrays, use System.arrayCopy method" class="net.sourceforge.pmd.lang.rule.XPathRule">
+
+    <rule name="AvoidArrayLoops" language="java" message="배열의 값을 루프문을 이용하여 복사하는 것 보다 System.arraycopy() 메소드를 이용하여 복사하는 것이 효율적이며 수행 속도가 빠름" class="net.sourceforge.pmd.lang.rule.XPathRule">
         <description>
 			Instead of manually copying data between two arrays, use the efficient Arrays.copyOf or System.arraycopy method instead.
       	</description>
@@ -323,7 +323,7 @@
         However, there is already a very similar rule AvoidConstantsInterface. 
         To remove the old (deprecated) rule name, so that there is only one rule.
     -->
-    <rule name="ConstantsInInterface" language="java" message="RULE#11:An interface should be used only to model a behaviour of a class" class="net.sourceforge.pmd.lang.rule.XPathRule">
+    <rule name="ConstantsInInterface" language="java" message="Interface는 클래스의 behavior 을 구현하는 데에만 사용해야 함. " class="net.sourceforge.pmd.lang.rule.XPathRule">
         <description>
 			Avoid constants in interfaces. Interfaces should define types, constants are implementation details better placed in classes or enums. 
       	</description>
@@ -364,7 +364,7 @@
         </properties>
     </rule>
 
-   <rule name="AvoidSynchronizedAtMethodLevel" language="java" message="RULE#12:Method level synchronization can backfire when new code is added to the method" class="net.sourceforge.pmd.lang.rule.XPathRule">
+   <rule name="AvoidSynchronizedAtMethodLevel" language="java" message="mothod 레벨의 synchronization 보다 block 레벨 synchronization 을 사용하는 것이 바람직함" class="net.sourceforge.pmd.lang.rule.XPathRule">
         <description>
 			Method-level synchronization can cause problems when new code is added to the method. 
 			Block-level synchronization helps to ensure that only the code that needs synchronization gets it.
@@ -405,7 +405,7 @@
         </properties>
     </rule>
 
-	<rule name="EmptyCatchBlock" language="java" message="RULE#13:Empty Catch Block finds instances where an exception is caught" class="net.sourceforge.pmd.lang.rule.XPathRule">
+	<rule name="EmptyCatchBlock" language="java" message="내용이 없는 Catch Block이 존재" class="net.sourceforge.pmd.lang.rule.XPathRule">
         <description>
 			Empty Catch Block finds instances where an exception is caught,
 			but nothing is done.  In most circumstances, this swallows an exception
@@ -441,7 +441,7 @@
         </properties>
     </rule>
 
-    <rule name="EmptyFinallyBlock" language="java" message="RULE#14:Avoid empty finally blocks" class="net.sourceforge.pmd.lang.rule.XPathRule">
+    <rule name="EmptyFinallyBlock" language="java" message="finally block이 비어있음" class="net.sourceforge.pmd.lang.rule.XPathRule">
         <description>
 			Empty finally blocks serve no purpose and should be removed.
       	</description>
@@ -470,7 +470,7 @@
         </properties>
     </rule>
 
-    <rule name="EmptyIfStmt" language="java" message="RULE#15:Avoid empty if statement" class="net.sourceforge.pmd.lang.rule.XPathRule">
+    <rule name="EmptyIfStmt" language="java" message="빈 if 구문의 사용을 피하도록 함" class="net.sourceforge.pmd.lang.rule.XPathRule">
         <description>
 			Empty If Statement finds instances where a condition is checked but nothing is done about it.
     	</description>
@@ -498,7 +498,7 @@
         </properties>
     </rule>
 
-    <rule name="EmptyStatementNotInLoop" language="java" message="RULE#16:Unnecessary ; statement" class="net.sourceforge.pmd.lang.rule.XPathRule">
+    <rule name="EmptyStatementNotInLoop" language="java" message="필요없는 문장 (;)이 있음" class="net.sourceforge.pmd.lang.rule.XPathRule">
         <description>
 			An empty statement (aka a semicolon by itself) that is not used
 			as the sole body of a for loop or while loop is probably a bug.  It
@@ -536,7 +536,7 @@
         </properties>
     </rule>
 
-    <rule name="EmptyTryBlock" language="java" message="RULE#17:Non empty try block" class="net.sourceforge.pmd.lang.rule.XPathRule">
+    <rule name="EmptyTryBlock" language="java" message="내용이 없는   try 블록이 존재함" class="net.sourceforge.pmd.lang.rule.XPathRule">
         <description>
 			Avoid empty try blocks - what's the point?
       	</description>
@@ -564,7 +564,7 @@
         </properties>
     </rule>
 
-    <rule name="EmptyWhileStmt" language="java" message="RULE#18:Non empty while statement" class="net.sourceforge.pmd.lang.rule.XPathRule">
+    <rule name="EmptyWhileStmt" language="java" message="빈 While 구문이 사용되었음. " class="net.sourceforge.pmd.lang.rule.XPathRule">
         <description>
 			Empty While Statement finds all instances where a while statement
 			does nothing.  If it is a timing loop, then you should use Thread.sleep() for it; if
@@ -591,7 +591,7 @@
         </properties>
     </rule>
 
-    <rule name="FinalFieldCouldBeStatic" language="java" message="RULE#19: change to static final field" class="net.sourceforge.pmd.lang.rule.XPathRule">
+    <rule name="FinalFieldCouldBeStatic" language="java" message="final field를 Static 으로 변경하면 overhead 를 줄일 수 있음." class="net.sourceforge.pmd.lang.rule.XPathRule">
         <description>
 			If a final field is assigned to a compile-time constant, it could be made static, thus saving overhead in each object at runtime.
       	</description>
@@ -617,7 +617,7 @@
         </properties>
     </rule>
 
-    <rule name="ImmutableField" language="java" message="RULE#20:Do not use final attribute in the constructor" class="net.sourceforge.pmd.lang.java.rule.design.ImmutableFieldRule">
+    <rule name="ImmutableField" language="java" message="생성자에서 Assign된 변수 ''{0}'' 를 Final로 선언하지 않았음" class="net.sourceforge.pmd.lang.java.rule.design.ImmutableFieldRule">
         <description>
 			Identifies private fields whose values never change once object initialization ends either in the declaration of the field or by a constructor. 
 			This helps in converting existing classes to becoming immutable ones.
@@ -643,7 +643,7 @@
     	Deprecated class : net.sourceforge.pmd.lang.java.rule.imports.ImportFromSamePackageRule
     	                   -> net.sourceforge.pmd.lang.java.rule.errorprone.ImportFromSamePackageRule
     -->
-    <rule name="ImportFromSamePackage" language="java" message="RULE#21:Do not need to use import in the same package" class="net.sourceforge.pmd.lang.java.rule.errorprone.ImportFromSamePackageRule">
+    <rule name="ImportFromSamePackage" language="java" message="동일 패키지에 있을 때는 import문을 사용할 필요가 없음" class="net.sourceforge.pmd.lang.java.rule.errorprone.ImportFromSamePackageRule">
         <description>
 			There is no need to import a type that lives in the same package.
      	</description>
@@ -663,7 +663,7 @@
     	Deprecated class : net.sourceforge.pmd.lang.java.rule.strings.InefficientEmptyStringCheckRule
     	                   -> net.sourceforge.pmd.lang.java.rule.performance.InefficientEmptyStringCheckRule
     -->
-    <rule name="InefficientEmptyStringCheck" language="java" message="RULE#22: Avoid using String.trim().length() in processing Empty String" class="net.sourceforge.pmd.lang.java.rule.performance.InefficientEmptyStringCheckRule">
+    <rule name="InefficientEmptyStringCheck" language="java" message="Empty String 을 체크하기 위해 String.trim().length() 을 사용하는 것은 피하도록 함" class="net.sourceforge.pmd.lang.java.rule.performance.InefficientEmptyStringCheckRule">
         <description>
 		   String.trim().length() is an inefficient way to check if a String is really empty, as it 
 		   creates a new String object just to check its size. Looping through a string, checking Character.isWhitespace()
@@ -686,7 +686,7 @@
     	Deprecated class : net.sourceforge.pmd.lang.java.rule.strings.InefficientStringBufferingRule
     	                   -> net.sourceforge.pmd.lang.java.rule.performance.InefficientStringBufferingRule
     -->
-    <rule name="InefficientStringBuffering" language="java" message="RULE#23:Don't directly concatenate nonliteral in the StringBuffer function" class="net.sourceforge.pmd.lang.java.rule.performance.InefficientStringBufferingRule">
+    <rule name="InefficientStringBuffering" language="java" message="StringBuffer 함수에서 nonliteral 을 직접 concatenate 하지 말 것" class="net.sourceforge.pmd.lang.java.rule.performance.InefficientStringBufferingRule">
         <description>
 			Avoid concatenating non-literals in a StringBuffer constructor or append() since intermediate buffers will need to be be created and destroyed by the JVM.
     	</description>
@@ -701,9 +701,9 @@
         <priority>3</priority>
         <properties/>
     </rule>
-    
+
     <!-- This rule is deprecated and will be removed with PMD 7.0.0. -->
-    <rule name="MisleadingVariableName" language="java" message="RULE#24:Don't use m_ initial name in the non-field" class="net.sourceforge.pmd.lang.rule.XPathRule">
+    <rule name="MisleadingVariableName" language="java" message="non-field 이름이 m_ 으로 시작함." class="net.sourceforge.pmd.lang.rule.XPathRule">
         <description>
 			Detects when a non-field has a name starting with 'm_'. This usually denotes a field and could be confusing. 
 			This rule is deprecated and will be removed with PMD 7.0.0. The rule is replaced by the more general rule {% rule java/codestyle/LocalVariableNamingConventions %}.
@@ -731,8 +731,8 @@
             </property>
         </properties>
     </rule>
-
-   <rule name="SimpleDateFormatNeedsLocale" language="java" message="RULE#25: Use Locale in creating SimpleDateFormat instance" class="net.sourceforge.pmd.lang.rule.XPathRule">
+    
+   <rule name="SimpleDateFormatNeedsLocale" language="java" message="SimpleDateFormat 인스턴스를 생성할때 Locale 을 지정하는 것이 바람직함" class="net.sourceforge.pmd.lang.rule.XPathRule">
         <description>
 			Be sure to specify a Locale when creating a new instance of SimpleDateFormat.
         </description>
@@ -758,7 +758,7 @@
         </properties>
     </rule>
 
-    <rule name="SimplifyBooleanExpressions" language="java" message="RULE#26: Avoid boolean operator in unnessary compare statement" class="net.sourceforge.pmd.lang.rule.XPathRule">
+    <rule name="SimplifyBooleanExpressions" language="java" message="boolean 사용 시 불필요한 비교 연산을 피하도록 함" class="net.sourceforge.pmd.lang.rule.XPathRule">
         <description>
 			Avoid unnecessary comparisons in boolean expressions - this makes simple code seem complicated.
       	</description>
@@ -788,9 +788,9 @@
 
     <!--
     	Deprecated class : net.sourceforge.pmd.lang.java.rule.strings.StringToStringRule
-    	                   -> net.sourceforge.pmd.lang.java.rule.performance.StringToStringRule 
+    	                   -> net.sourceforge.pmd.lang.java.rule.performance.StringToStringRule   
     -->
-    <rule name="StringToString" language="java" message="RULE#27: Unnessary toString() function in operating String Object" class="net.sourceforge.pmd.lang.java.rule.performance.StringToStringRule">
+    <rule name="StringToString" language="java" message="String 객체에서 toString()함수를 사용하는 것은 불필요함" class="net.sourceforge.pmd.lang.java.rule.performance.StringToStringRule">
         <description>
     		Avoid calling toString() on String objects; this is unnecessary
     	</description>
@@ -807,8 +807,8 @@
         <priority>1</priority>
         <properties/>
     </rule>
-  
-    <rule name="SwitchStmtsShouldHaveDefault" language="java" message="RULE#28: Switch statements should have a default label." class="net.sourceforge.pmd.lang.rule.XPathRule">
+    
+    <rule name="SwitchStmtsShouldHaveDefault" language="java" message="Switch구문에는 반드시 default label이 있어야 함" class="net.sourceforge.pmd.lang.rule.XPathRule">
         <description>
 			Switch statements should have a default label.
     	</description>
@@ -837,7 +837,7 @@
     </rule>
 
     <!-- UncommentedEmptyMethod -> UncommentedEmptyMethodBody -->
-    <rule name="UncommentedEmptyMethodBody" language="java" message="RULE#29: Uncommented Empty Method Body finds instances" class="net.sourceforge.pmd.lang.rule.XPathRule">
+    <rule name="UncommentedEmptyMethodBody" language="java" message="빈 Method Body에 주석을 추가할것" class="net.sourceforge.pmd.lang.rule.XPathRule">
         <description>
 			Uncommented Empty Method Body finds instances where a method body does not contain
 			statements, but there is no comment. By explicitly commenting empty methods bodies
@@ -866,7 +866,7 @@
     	Deprecated class : net.sourceforge.pmd.lang.java.rule.unnecessary.UnnecessaryConversionTemporaryRule
     	                   -> net.sourceforge.pmd.lang.java.rule.errorprone.UnnecessaryConversionTemporaryRule   
     -->
-    <rule name="UnnecessaryConversionTemporary" language="java" message="RULE#30:Avoid unnecessary temporaries when converting primitives to Strings" class="net.sourceforge.pmd.lang.java.rule.errorprone.UnnecessaryConversionTemporaryRule">
+    <rule name="UnnecessaryConversionTemporary" language="java" message="기본 데이터(primitive type)를 String으로 변환할 때 불필요한 임시 변환 작업을 피하도록 함" class="net.sourceforge.pmd.lang.java.rule.errorprone.UnnecessaryConversionTemporaryRule">
         <description>
 			Avoid unnecessary temporaries when converting primitives to Strings
       	</description>
@@ -884,7 +884,7 @@
         <properties/>
     </rule>
 
-    <rule name="UnnecessaryParentheses" language="java" message="RULE#31:Sometimes expressions are wrapped in unnecessary parentheses" class="net.sourceforge.pmd.lang.rule.XPathRule">
+    <rule name="UnnecessaryParentheses" language="java" message="괄호가 없어도 되는 상황에서 불필요한 괄호를 사용할 경우 마치 메소드 호출처럼 보여서 소스 코드의 가독성을 떨어뜨릴 수 있음." class="net.sourceforge.pmd.lang.rule.XPathRule">
         <description>
 			Sometimes expressions are wrapped in unnecessary parentheses,
 			making them look like a function call.
@@ -912,12 +912,12 @@
             </property>
         </properties>
     </rule>
-    
+ 
     <!--
     	class : net.sourceforge.pmd.lang.rule.XPathRule
     	     -> net.sourceforge.pmd.lang.java.rule.performance.UnnecessaryWrapperObjectCreationRule     
     -->
-    <rule name="UnnecessaryWrapperObjectCreation" language="java" message="RULE#32:Parsing method should be called directy instead." class="net.sourceforge.pmd.lang.java.rule.performance.UnnecessaryWrapperObjectCreationRule">
+    <rule name="UnnecessaryWrapperObjectCreation" language="java" message="불필요한 Wrapper Object가 생성되었음." class="net.sourceforge.pmd.lang.java.rule.performance.UnnecessaryWrapperObjectCreationRule">
         <description>
 			Parsing method should be called directy instead.
       	</description>
@@ -972,12 +972,12 @@
         </properties>
         -->
     </rule>
-
+    
     <!--
     	Deprecated class : net.sourceforge.pmd.lang.java.rule.unusedcode.UnusedFormalParameterRule
     	                   -> net.sourceforge.pmd.lang.java.rule.bestpractices.UnusedFormalParameterRule       
     -->
-    <rule name="UnusedFormalParameter" language="java" message="RULE#33:Avoid passing parameters to methods or constructors and then not using those parameters." class="net.sourceforge.pmd.lang.java.rule.bestpractices.UnusedFormalParameterRule">
+    <rule name="UnusedFormalParameter" language="java" message="''{1}'' 처럼  사용되지 않는  ''{0}'' 파라미터가 있음" class="net.sourceforge.pmd.lang.java.rule.bestpractices.UnusedFormalParameterRule">
         <description>
 			Avoid passing parameters to methods or constructors and then not using those parameters.
     	</description>
@@ -992,12 +992,12 @@
         <priority>3</priority>
         <properties/>
     </rule>
-    
+
     <!--
     	Deprecated class : net.sourceforge.pmd.lang.java.rule.unusedcode.UnusedPrivateFieldRule
     	                   -> net.sourceforge.pmd.lang.java.rule.bestpractices.UnusedPrivateFieldRule        
     -->
-    <rule name="UnusedPrivateField" language="java" message="RULE#34:Detects when a private field is declared and/or assigned a value, but not used." class="net.sourceforge.pmd.lang.java.rule.bestpractices.UnusedPrivateFieldRule">
+    <rule name="UnusedPrivateField" language="java" message="사용되지 않는 Private field ''{0}'' 가 선언되었음" class="net.sourceforge.pmd.lang.java.rule.bestpractices.UnusedPrivateFieldRule">
         <description>
 			Detects when a private field is declared and/or assigned a value, but not used.
     	</description>
@@ -1021,7 +1021,7 @@
     	Deprecated class : net.sourceforge.pmd.lang.java.rule.unusedcode.UnusedPrivateMethodRule
     	                   -> net.sourceforge.pmd.lang.java.rule.bestpractices.UnusedPrivateMethodRule
     -->
-    <rule name="UnusedPrivateMethod" language="java" message="RULE#35:Unused Private Method detects when a private method is declared but is unused." class="net.sourceforge.pmd.lang.java.rule.bestpractices.UnusedPrivateMethodRule">
+    <rule name="UnusedPrivateMethod" language="java" message="사용되지 않는 Private Method ''{0}'' 가 선언되었음" class="net.sourceforge.pmd.lang.java.rule.bestpractices.UnusedPrivateMethodRule">
         <description>
 			Unused Private Method detects when a private method is declared but is unused.
     	</description>
@@ -1040,7 +1040,7 @@
     	class : net.sourceforge.pmd.lang.rule.XPathRule
     	     -> net.sourceforge.pmd.lang.java.rule.performance.UselessStringValueOfRule 
     -->
-    <rule name="UselessStringValueOf" language="java" message="RULE#36:Use valueOf() argument directly." class="net.sourceforge.pmd.lang.java.rule.performance.UselessStringValueOfRule">
+    <rule name="UselessStringValueOf" language="java" message="String 을 append 할 경우, String.valueOf 함수를 사용할 필요 없음." class="net.sourceforge.pmd.lang.java.rule.performance.UselessStringValueOfRule">
         <description>
 			Use valueOf() argument directly.
       	</description>
@@ -1070,7 +1070,7 @@
         </properties>
         -->
     </rule>
-
+    
     <!-- Deprecated and Removed
     <rule name="WhileLoopsMustUseBraces" language="java" message="중괄호없이 사용된 while문의 사용은 피하라" class="net.sourceforge.pmd.lang.rule.XPathRule">
         <description>
@@ -1101,7 +1101,7 @@
         Deprecated class : net.sourceforge.pmd.lang.java.rule.imports.DuplicateImportsRule 
                            -> net.sourceforge.pmd.lang.java.rule.codestyle.DuplicateImportsRule
     -->
-    <rule name="DuplicateImports" language="java" message="RULE#38:Avoid duplicate import statements" class="net.sourceforge.pmd.lang.java.rule.codestyle.DuplicateImportsRule">
+    <rule name="DuplicateImports" language="java" message="''{0}'' import문이 중복 선언 되었음" class="net.sourceforge.pmd.lang.java.rule.codestyle.DuplicateImportsRule">
         <description>
     		Avoid duplicate import statements.
     	</description>
@@ -1118,7 +1118,7 @@
     
     <rule name="SystemPrintln"
     		since="2.1"
-         language="java" message="RULE#39:Consider using a logger rather than System.out.print() statement"
+         language="java" message="System.out.print 가 사용됨."
          class="net.sourceforge.pmd.lang.rule.XPathRule"
           externalInfoUrl="http://pmd.sourceforge.net/rules/logging-java.html#SystemPrintln">
    		<description>
