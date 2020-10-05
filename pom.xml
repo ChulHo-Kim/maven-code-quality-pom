@@ -675,6 +675,7 @@
 					<linkXref>true</linkXref>
 					<sourceEncoding>utf-8</sourceEncoding>
 					<targetJdk>${jdk.version}</targetJdk>
+					<<includeTests>true</includeTests>
 					<rulesets>
 					    <ruleset>file:///${project.basedir}/maven-pmd-plugin-default.xml</ruleset>
 					</rulesets>
